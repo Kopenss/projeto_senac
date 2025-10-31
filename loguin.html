@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olá novamente - Login</title>
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Carrega a fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define a fonte Inter como padrão e o fundo preto */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        
+        /* Estilos customizados para os botões de social login */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem; /* 12px */
+            width: 100%;
+            border: 2px solid #727272;
+            border-radius: 9999px; /* rounded-full */
+            padding: 0.75rem; /* 12px */
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-btn:hover {
+            border-color: #fff;
+        }
+
+        /* Cor verde do Spotify */
+        .spotify-green {
+            background-color: #1DB954;
+        }
+        .spotify-green:hover {
+            background-color: #1ED760;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Cabeçalho com o logo -->
+    <header class="py-8 px-4 flex justify-center">
+        <!-- Logo SVG original substituído pela imagem -->
+        <a href="#">
+            <img src="https://i.ibb.co/nq3Ww3Wv/Design-sem-nome.png" alt="Logo Falsa" class="w-42">
+        </a>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="w-full max-w-md mx-auto px-6 py-8 flex-grow">
+        <h1 class="text-3xl md:text-4xl font-bold text-white text-center mb-8">
+            Olá novamente
+        </h1>
+
+        <!-- Formulário de Login -->
+        <form class="flex flex-col gap-4 mb-4" onsubmit="handleLogin(event, 'email')">
+            <div>
+                <label for="username" class="font-bold text-white text-sm mb-2 block">
+                    E-mail ou nome de utilizador
+                </label>
+                <input 
+                    type="text" 
+                    id="username" 
+                    class="w-full p-3 bg-gray-800 border border-gray-700 rounded-md text-white placeholder-gray-500 focus:outline-none focus:border-white focus:ring-1 focus:ring-white"
+                    placeholder="E-mail ou nome de utilizador"
+                >
+            </div>
+            
+            <button 
+                type="submit" 
+                data-login-btn
+                class="w-full p-3 rounded-full spotify-green text-black font-bold text-lg transition duration-300 transform">
+                Continuar
+            </button>
+        </form>
+
+        <!-- Separador "ou" -->
+        <div class="flex items-center gap-4 my-6">
+            <hr class="flex-grow border-gray-700">
+            <span class="text-gray-400 font-semibold text-sm">ou</span>
+            <hr class="flex-grow border-gray-700">
+        </div>
+
+        <!-- Botões de Login Social -->
+        <div class="flex flex-col gap-3 mb-8">
+            <!-- Telefone -->
+            <a href="#" class="social-btn" onclick="handleLogin(event, 'telefone')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                Continuar com o número de telefone
+            </a>
+            
+            <!-- Google -->
+            <a href="#" class="social-btn" onclick="handleLogin(event, 'Google')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 48 48">
+                    <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"></path>
+                    <path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691z"></path>
+                    <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"></path>
+                    <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-0.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C41.31 36.148 44 31.026 44 24c0-1.341-.138-2.65-.389-3.917z"></path>
+                </svg>
+                Continuar com o Google
+            </a>
+            
+            <!-- Facebook -->
+            <a href="#" class="social-btn" onclick="handleLogin(event, 'Facebook')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="#1877F2" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                </svg>
+                Continuar com o Facebook
+            </a>
+
+            <!-- Apple -->
+            <a href="#" class="social-btn" onclick="handleLogin(event, 'Apple')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24">
+                    <path d="M12.022 5.594c.905 0 1.776-.407 2.45-1.127.697-.745 1.137-1.77 1.137-2.82 0-.09-.005-.18-.014-.27-.84.03-1.98.47-2.822 1.253-.67.65-1.15 1.62-1.15 2.67 0 .104.01.208.02.31.06.01.15.02.24.02zM10.85 6.014c.0-.005.0-.01.0-.014C9.47 5.9 8.24 5.3 7.02 5.3c-2.4 0-4.5 1.8-4.5 5.1 0 2.2 1.0 4.3 2.1 5.6 1.0 1.2 1.8 2.3 3.0 2.3 1.1 0 1.6-.7 3.0-.7s1.9.7 3.0.7c1.1 0 1.9-1.1 2.9-2.3 1.1-1.3 1.7-2.9 1.7-4.8 0-2.8-2.2-4.1-2.3-4.2-1.4-1.8-3.5-1.9-4.2-1.9zm5.3 12.1c-.8 1.1-1.6 2.2-2.7 2.2-1.0 0-1.4-.7-2.8-.7s-1.8.7-2.9.7c-1.1 0-1.8-1.0-2.6-2.1-1.0-1.4-1.8-3.4-1.8-5.7 0-3.3 2.1-5.1 4.5-5.1 1.6 0 3.0 1.0 3.8 1.0.8 0 2.4-1.1 4.1-1.1.2 0 .4 0 .6.0-.1 2.9-2.2 5.1-4.1 6.3z"></path>
+                </svg>
+                Continuar com a Apple
+            </a>
+        </div>
+        
+        <!-- Link de Registro -->
+        <div class="text-center border-t border-gray-700 pt-8 mt-8">
+            <p class="text-gray-400 mb-4">Não tens conta?</p>
+            <a 
+                href="#" 
+                class="font-bold text-white hover:text-[#1DB954] underline transition duration-300"
+                onclick="handleLogin(event, 'registro')">
+                Regista-te
+            </a>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="text-center text-xs text-gray-500 p-8">
+        <p>
+            Este site é protegido por reCAPTCHA. Aplicam-se a 
+            <a href="#" class="underline hover:text-white">Política de Privacidade</a> e os 
+            <a href="#" class="underline hover:text-white">Termos do Serviço da Google</a>.
+        </p>
+    </footer>
+
+    <!-- Caixa de Mensagem (para interatividade) -->
+    <div 
+        id="message-box" 
+        class="hidden fixed top-5 right-5 bg-blue-600 text-white p-4 rounded-lg shadow-lg transition-all duration-300 transform translate-x-full">
+        Processando... (Simulação)
+    </div>
+
+    <script>
+        // Simulação de interatividade
+        const messageBox = document.getElementById('message-box');
+        let messageTimer;
+
+        function handleLogin(event, method) {
+            // Previne a ação padrão (ex: seguir o link ou enviar o form)
+            event.preventDefault();
+
+            // Limpa timer anterior se houver
+            clearTimeout(messageTimer);
+
+            // Define a mensagem
+            let message = "Processando login... (Simulação)";
+            if (method === 'registro') {
+                message = "Indo para a página de registro... (Simulação)";
+            } else if (method !== 'email') {
+                message = `Iniciando login com ${method}... (Simulação)`;
+            }
+
+            messageBox.textContent = message;
+            
+            // Mostra a mensagem
+            messageBox.classList.remove('hidden', 'translate-x-full');
+            messageBox.classList.add('translate-x-0');
+
+            // Esconde a mensagem depois de 3 segundos
+            messageTimer = setTimeout(() => {
+                messageBox.classList.remove('translate-x-0');
+                messageBox.classList.add('translate-x-full');
+                // Adiciona um pequeno delay antes de esconder para a animação de saída funcionar
+                setTimeout(() => messageBox.classList.add('hidden'), 300);
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
+
